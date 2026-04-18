@@ -1,0 +1,1630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neha — UI/UX Designer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --black: #111;
+        --white: #fff;
+        --accent: #e84b3a;
+        --accent2: #f2a900;
+        --bg: #f9f7f4;
+        --text: #1a1a1a;
+        --muted: #666;
+        --border: #e2ddd8;
+        --card-bg: #fff;
+        --dark-bg: #141414;
+        --dark-text: #fff;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        height: 60px;
+      }
+      .nav-logo {
+        color: #fff;
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 400;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+      }
+      .nav-cta {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .nav-cta:hover {
+        opacity: 0.85;
+      }
+
+      /* HERO */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 100px 5% 60px;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+      .hero-text {
+        flex: 1;
+        max-width: 520px;
+      }
+      .hero-text h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.8rem, 5vw, 4.5rem);
+        font-weight: 900;
+        line-height: 1.1;
+        color: var(--black);
+        margin-bottom: 1.5rem;
+      }
+      .hero-text p {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        max-width: 420px;
+      }
+      .hero-btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.85rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition:
+          transform 0.2s,
+          opacity 0.2s;
+      }
+      .hero-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
+      .hero-image-wrap {
+        position: relative;
+        flex-shrink: 0;
+        width: clamp(280px, 38vw, 480px);
+        height: clamp(320px, 45vw, 540px);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .hero-blob {
+        position: absolute;
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+      .blob-yellow {
+        width: 220px;
+        height: 220px;
+        background: #f2c94c;
+        top: 0;
+        right: 30px;
+        z-index: 0;
+      }
+      .blob-pink {
+        width: 180px;
+        height: 180px;
+        background: #e84b8a;
+        bottom: 30px;
+        left: 0;
+        z-index: 0;
+      }
+      .blob-blue {
+        width: 160px;
+        height: 160px;
+        background: #56ccf2;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      .hero-photo {
+        position: relative;
+        z-index: 1;
+        width: 80%;
+        height: 90%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 50% 50% 0 0;
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.18));
+      }
+      .hero-photo-placeholder {
+        position: relative;
+        z-index: 1;
+        width: 80%;
+        height: 90%;
+        background: linear-gradient(160deg, #e8e0f0, #c8b8e0);
+        border-radius: 50% 50% 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        color: #9b7fc4;
+      }
+
+      /* SECTION COMMON */
+      section {
+        padding: 90px 5%;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        color: var(--black);
+      }
+      .section-center {
+        text-align: center;
+      }
+      .max-w {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* ABOUT */
+      #about {
+        background: var(--bg);
+      }
+      .about-inner {
+        display: flex;
+        align-items: flex-start;
+        gap: 5rem;
+      }
+      .about-text {
+        flex: 1.2;
+      }
+      .about-text p {
+        color: var(--muted);
+        line-height: 1.9;
+        font-size: 0.97rem;
+        margin-bottom: 1.5rem;
+      }
+      .about-btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.7rem 1.8rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 0.5rem;
+        transition: opacity 0.2s;
+      }
+      .about-btn:hover {
+        opacity: 0.85;
+      }
+      .about-stats {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 1.2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .stat-item:last-child {
+        border-bottom: none;
+      }
+      .stat-check {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+      .stat-check svg {
+        width: 100%;
+        height: 100%;
+      }
+      .stat-text {
+        font-size: 1rem;
+        color: var(--text);
+      }
+      .stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--black);
+      }
+      .stat-label {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      /* PROJECTS */
+      #projects {
+        background: #fff;
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .project-card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--card-bg);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+        cursor: pointer;
+      }
+      .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      }
+      .project-thumb {
+        height: 200px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: var(--muted);
+        position: relative;
+        overflow: hidden;
+      }
+      .project-thumb.p1 {
+        background: linear-gradient(135deg, #fff8ee, #ffe6c0);
+      }
+      .project-thumb.p2 {
+        background: linear-gradient(135deg, #f0f4ff, #dce8ff);
+      }
+      .project-thumb.p3 {
+        background: linear-gradient(135deg, #f0f0ff, #e0d9ff);
+      }
+      .project-tag-inner {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        padding: 3px 12px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--accent);
+      }
+      .project-mockup {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+      }
+      .project-info {
+        padding: 1rem 1.1rem;
+      }
+      .project-tag {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 0.25rem;
+      }
+      .project-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--black);
+        text-decoration: underline;
+      }
+      .see-more {
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+      .see-more a {
+        color: var(--accent);
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-decoration: none;
+      }
+      .see-more a:hover {
+        text-decoration: underline;
+      }
+
+      /* Project placeholder visuals */
+      .proj-visual {
+        width: 80%;
+        max-width: 220px;
+      }
+      .proj-label {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: -0.5px;
+      }
+
+      /* EXPERIENCE */
+      #experience {
+        background: var(--bg);
+      }
+      .exp-inner {
+        display: flex;
+        gap: 4rem;
+        align-items: flex-start;
+      }
+      .exp-timeline {
+        flex: 1.2;
+        position: relative;
+      }
+      .exp-timeline::before {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: var(--border);
+      }
+      .exp-item {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        position: relative;
+      }
+      .exp-dot {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 2px var(--border);
+      }
+      .exp-dot.active {
+        background: var(--accent);
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+      .exp-dot.inactive {
+        background: var(--black);
+      }
+      .exp-content h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .exp-content p {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+      .exp-illustration {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .exp-svg-wrap {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      /* TESTIMONIALS */
+      #testimonials {
+        background: var(--dark-bg);
+        padding: 90px 5%;
+      }
+      #testimonials .section-title {
+        color: #fff;
+      }
+      #testimonials .section-title span {
+        color: var(--accent);
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .testi-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 1.8rem;
+        position: relative;
+      }
+      .testi-quote {
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.08);
+        position: absolute;
+        top: 10px;
+        left: 16px;
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+      .testi-text {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+      .testi-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #fff;
+        font-size: 0.85rem;
+      }
+      .testi-name {
+        font-weight: 600;
+        color: #fff;
+        font-size: 0.9rem;
+      }
+      .testi-role {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .testi-stars {
+        color: #f2c94c;
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+      }
+
+      /* CTA BAND */
+      #cta-band {
+        background: var(--bg);
+        padding: 80px 5%;
+        text-align: center;
+      }
+      #cta-band h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      #cta-band h2 span {
+        color: var(--accent);
+      }
+      .email-form {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        max-width: 520px;
+        margin: 2.5rem auto 2rem;
+        border: 1.5px solid var(--border);
+        border-radius: 30px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .email-icon {
+        padding: 0 1rem;
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+      .email-form input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 0.9rem 0.5rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        background: transparent;
+      }
+      .email-form button {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 0.9rem 1.5rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: opacity 0.2s;
+      }
+      .email-form button:hover {
+        opacity: 0.85;
+      }
+      .cta-badges {
+        display: flex;
+        gap: 2.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .cta-badge-icon {
+        color: var(--accent);
+        font-size: 1rem;
+      }
+
+      /* CONTACT */
+      #contact {
+        background: #fff;
+        padding: 90px 5%;
+      }
+      .contact-inner {
+        background: var(--black);
+        border-radius: 20px;
+        display: flex;
+        gap: 0;
+        overflow: hidden;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .contact-left {
+        flex: 1;
+        padding: 3rem;
+      }
+      .contact-left h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+      .contact-left p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.9rem;
+        line-height: 1.75;
+        margin-top: 1rem;
+      }
+      .contact-right {
+        flex: 1.2;
+        padding: 3rem;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-bottom: 0.4rem;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        outline: none;
+        padding: 0.6rem 0;
+        color: #fff;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        transition: border-color 0.2s;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-bottom-color: var(--accent);
+      }
+      .form-group textarea {
+        resize: none;
+        height: 80px;
+      }
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .submit-btn {
+        background: #fff;
+        color: var(--black);
+        border: none;
+        cursor: pointer;
+        padding: 0.8rem 2rem;
+        border-radius: 25px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .submit-btn:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--bg);
+        padding: 60px 5% 30px;
+        border-top: 1px solid var(--border);
+      }
+      .footer-inner {
+        display: flex;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+      }
+      .footer-brand {
+        flex: 1.5;
+        min-width: 200px;
+      }
+      .footer-brand h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+      }
+      .footer-brand p {
+        font-size: 0.85rem;
+        color: var(--muted);
+        line-height: 1.75;
+        max-width: 240px;
+      }
+      .footer-col {
+        flex: 1;
+        min-width: 120px;
+      }
+      .footer-col h4 {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--black);
+      }
+      .footer-col a {
+        display: block;
+        font-size: 0.83rem;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: var(--accent);
+      }
+      .social-links {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 0.5rem;
+      }
+      .social-link {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+      .social-link svg {
+        display: block;
+        margin: auto;
+      }
+      .social-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      /* Scroll reveal animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        .hero-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-image-wrap {
+          width: 280px;
+          height: 320px;
+        }
+        .about-inner {
+          flex-direction: column;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .exp-inner {
+          flex-direction: column;
+        }
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-inner {
+          flex-direction: column;
+        }
+        .footer-inner {
+          gap: 2rem;
+        }
+        nav .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a class="nav-logo" href="#">Neha</a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#projects">Project</a></li>
+        <li><a href="#experience">Resume</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-text reveal">
+          <h1>I'm Neha,<br />a web designer</h1>
+          <p>
+            Hi, I'm Neha, a passionate UI/UX designer specializing in intuitive
+            user flows for mobile and web apps. I love crafting seamless digital
+            experiences that enhance usability and engagement. Currently, I'm
+            interning at Gurked Technologies, refining my skills and bringing
+            ideas to life!
+          </p>
+          <a href="#contact" class="hero-btn">Contact me</a>
+        </div>
+        <div class="hero-image-wrap reveal">
+          <div class="hero-blob blob-yellow"></div>
+          <div class="hero-blob blob-pink"></div>
+          <div class="hero-blob blob-blue"></div>
+          <img
+            src="nehaphoto.png"
+            alt="Neha - UI/UX Designer"
+            class="hero-photo"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="max-w about-inner">
+        <div class="about-text reveal">
+          <h2 class="section-title">About me</h2>
+          <p>
+            "I am a passionate UI/UX designer with a keen eye for detail and a
+            deep understanding of user centered design principles. I specialize
+            in creating intuitive, aesthetically pleasing, and accessible
+            interfaces that enhance user experience across digital platforms.
+            With a strong foundation in research, prototyping, and user testing,
+            I aim to craft seamless designs that not only meet business goals
+            but also delight users. I continuously strive to learn and evolve,
+            staying up to date with the latest design trends and technologies."
+          </p>
+          <a href="#projects" class="about-btn">Read more</a>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat-item">
+            <div class="stat-check">
+              <svg
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="14"
+                  cy="14"
+                  r="13"
+                  stroke="#E84B3A"
+                  stroke-width="2"
+                />
+                <path
+                  d="M8 14.5L12 18.5L20 10"
+                  stroke="#E84B3A"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="stat-num">90%</div>
+              <div class="stat-label">Client satisfaction</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-check">
+              <svg
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="14"
+                  cy="14"
+                  r="13"
+                  stroke="#E84B3A"
+                  stroke-width="2"
+                />
+                <path
+                  d="M8 14.5L12 18.5L20 10"
+                  stroke="#E84B3A"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="stat-num">+6</div>
+              <div class="stat-label">Months of experience</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-check">
+              <svg
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="14"
+                  cy="14"
+                  r="13"
+                  stroke="#E84B3A"
+                  stroke-width="2"
+                />
+                <path
+                  d="M8 14.5L12 18.5L20 10"
+                  stroke="#E84B3A"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="stat-num">+2</div>
+              <div class="stat-label">Successful projects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="max-w">
+        <h2 class="section-title section-center reveal">Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card reveal">
+            <div class="project-thumb p1">
+              <span class="project-tag-inner">Figma design</span>
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #e84b3a;
+                  "
+                >
+                  DigiRecruitX.com
+                </div>
+                <div style="font-size: 0.72rem; color: #888; margin-top: 4px">
+                  Recruitment Consultant USA
+                </div>
+                <svg
+                  width="110"
+                  height="70"
+                  viewBox="0 0 110 70"
+                  style="margin-top: 8px"
+                >
+                  <rect
+                    width="110"
+                    height="70"
+                    rx="6"
+                    fill="#fff"
+                    stroke="#eee"
+                    stroke-width="1"
+                  />
+                  <rect
+                    x="6"
+                    y="8"
+                    width="30"
+                    height="4"
+                    rx="2"
+                    fill="#E84B3A"
+                    opacity="0.6"
+                  />
+                  <rect
+                    x="6"
+                    y="16"
+                    width="20"
+                    height="3"
+                    rx="1.5"
+                    fill="#ddd"
+                  />
+                  <rect
+                    x="6"
+                    y="24"
+                    width="98"
+                    height="28"
+                    rx="4"
+                    fill="#fff8ee"
+                    stroke="#eee"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="10"
+                    y="28"
+                    width="40"
+                    height="4"
+                    rx="2"
+                    fill="#eee"
+                  />
+                  <rect
+                    x="10"
+                    y="36"
+                    width="60"
+                    height="3"
+                    rx="1.5"
+                    fill="#f5e0c0"
+                  />
+                  <rect
+                    x="10"
+                    y="43"
+                    width="50"
+                    height="3"
+                    rx="1.5"
+                    fill="#f5e0c0"
+                  />
+                  <rect
+                    x="6"
+                    y="56"
+                    width="18"
+                    height="8"
+                    rx="4"
+                    fill="#E84B3A"
+                    opacity="0.8"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Figma design</div>
+              <div class="project-name">DigiRecruitX.com</div>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-thumb p2">
+              <span class="project-tag-inner">Figma design</span>
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    color: #2c5ee8;
+                  "
+                >
+                  Bingo
+                </div>
+                <div style="font-size: 0.72rem; color: #888; margin-top: 2px">
+                  Astrotalk App
+                </div>
+                <svg
+                  width="90"
+                  height="70"
+                  viewBox="0 0 90 70"
+                  style="margin-top: 6px"
+                >
+                  <rect width="90" height="70" rx="8" fill="#1a1a2e" />
+                  <rect
+                    x="5"
+                    y="6"
+                    width="80"
+                    height="18"
+                    rx="4"
+                    fill="#2c5ee8"
+                    opacity="0.4"
+                  />
+                  <rect
+                    x="10"
+                    y="10"
+                    width="30"
+                    height="4"
+                    rx="2"
+                    fill="#fff"
+                    opacity="0.8"
+                  />
+                  <rect
+                    x="5"
+                    y="28"
+                    width="38"
+                    height="38"
+                    rx="4"
+                    fill="#ff6b9d"
+                    opacity="0.5"
+                  />
+                  <rect
+                    x="47"
+                    y="28"
+                    width="38"
+                    height="18"
+                    rx="4"
+                    fill="#4ecdc4"
+                    opacity="0.5"
+                  />
+                  <rect
+                    x="47"
+                    y="48"
+                    width="38"
+                    height="18"
+                    rx="4"
+                    fill="#ffd93d"
+                    opacity="0.5"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Figma design</div>
+              <div class="project-name">Bingo Astrotalk App</div>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-thumb p3">
+              <span class="project-tag-inner">Figma design</span>
+              <div style="text-align: center">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #6c63ff;
+                  "
+                >
+                  Dashboard
+                </div>
+                <svg
+                  width="110"
+                  height="70"
+                  viewBox="0 0 110 70"
+                  style="margin-top: 8px"
+                >
+                  <rect
+                    width="110"
+                    height="70"
+                    rx="6"
+                    fill="#f8f7ff"
+                    stroke="#e8e5ff"
+                    stroke-width="1"
+                  />
+                  <rect
+                    x="4"
+                    y="4"
+                    width="22"
+                    height="62"
+                    rx="3"
+                    fill="#6c63ff"
+                    opacity="0.15"
+                  />
+                  <rect
+                    x="30"
+                    y="4"
+                    width="76"
+                    height="16"
+                    rx="3"
+                    fill="#fff"
+                    stroke="#e8e5ff"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="30"
+                    y="24"
+                    width="36"
+                    height="22"
+                    rx="3"
+                    fill="#6c63ff"
+                    opacity="0.2"
+                  />
+                  <rect
+                    x="70"
+                    y="24"
+                    width="36"
+                    height="22"
+                    rx="3"
+                    fill="#e84b3a"
+                    opacity="0.2"
+                  />
+                  <rect
+                    x="30"
+                    y="50"
+                    width="76"
+                    height="16"
+                    rx="3"
+                    fill="#fff"
+                    stroke="#e8e5ff"
+                    stroke-width="0.5"
+                  />
+                  <rect
+                    x="34"
+                    y="26"
+                    width="20"
+                    height="4"
+                    rx="2"
+                    fill="#6c63ff"
+                    opacity="0.6"
+                  />
+                  <path
+                    d="M34 36 L40 32 L46 34 L54 30 L58 33"
+                    stroke="#6c63ff"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tag">Figma design</div>
+              <div class="project-name">Dashboard</div>
+            </div>
+          </div>
+        </div>
+        <div class="see-more reveal">
+          For see more <a href="#">Click here</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="max-w exp-inner">
+        <div class="exp-timeline">
+          <h2 class="section-title reveal">My Work Experience</h2>
+          <div class="exp-item reveal">
+            <div class="exp-dot active"></div>
+            <div class="exp-content">
+              <h3>UI/UX (Graphic) Designer</h3>
+              <p>
+                Experienced UI/UX Designer specializing in user-centered design,
+                wireframing. Passionate about creating seamless digital
+                experiences that enhance usability and engagement.
+              </p>
+            </div>
+          </div>
+          <div class="exp-item reveal">
+            <div class="exp-dot inactive"></div>
+            <div class="exp-content">
+              <h3>UI/UX Designer</h3>
+              <p>
+                Designed intuitive, user-centric interfaces and experiences,
+                enhancing engagement and usability through research-driven UI/UX
+                solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="exp-illustration reveal">
+          <svg
+            viewBox="0 0 320 260"
+            xmlns="http://www.w3.org/2000/svg"
+            class="exp-svg-wrap"
+          >
+            <circle cx="200" cy="80" r="60" fill="#f5e8ff" opacity="0.7" />
+            <rect
+              x="80"
+              y="140"
+              width="200"
+              height="100"
+              rx="10"
+              fill="#fff"
+              stroke="#E2DDD8"
+              stroke-width="1.5"
+            />
+            <rect
+              x="95"
+              y="155"
+              width="80"
+              height="6"
+              rx="3"
+              fill="#E84B3A"
+              opacity="0.6"
+            />
+            <rect x="95" y="168" width="160" height="4" rx="2" fill="#eee" />
+            <rect x="95" y="178" width="140" height="4" rx="2" fill="#eee" />
+            <rect x="95" y="188" width="100" height="4" rx="2" fill="#eee" />
+            <rect
+              x="95"
+              y="210"
+              width="40"
+              height="16"
+              rx="8"
+              fill="#E84B3A"
+              opacity="0.8"
+            />
+            <circle cx="200" cy="85" r="42" fill="#c8b0e8" />
+            <ellipse cx="200" cy="78" rx="18" ry="20" fill="#9b7fc4" />
+            <path
+              d="M160 145 Q170 120 200 118 Q230 120 240 145"
+              fill="#7b5fa4"
+            />
+            <circle cx="140" cy="100" r="28" fill="#f9a0a0" />
+            <ellipse
+              cx="140"
+              cy="95"
+              rx="12"
+              ry="14"
+              fill="#e84b3a"
+              opacity="0.7"
+            />
+            <path
+              d="M112 135 Q120 118 140 116 Q160 118 168 135"
+              fill="#e84b3a"
+              opacity="0.5"
+            />
+            <line
+              x1="140"
+              y1="130"
+              x2="140"
+              y2="145"
+              stroke="#ddd"
+              stroke-width="1.5"
+              stroke-dasharray="3"
+            />
+            <line
+              x1="200"
+              y1="128"
+              x2="200"
+              y2="145"
+              stroke="#ddd"
+              stroke-width="1.5"
+              stroke-dasharray="3"
+            />
+            <circle cx="250" cy="120" r="14" fill="#a0c4ff" opacity="0.8" />
+            <rect
+              x="243"
+              y="113"
+              width="14"
+              height="10"
+              rx="2"
+              fill="#378ADD"
+              opacity="0.5"
+            />
+            <line
+              x1="248"
+              y1="123"
+              x2="248"
+              y2="140"
+              stroke="#aaa"
+              stroke-width="1.5"
+            />
+            <line
+              x1="252"
+              y1="123"
+              x2="252"
+              y2="140"
+              stroke="#aaa"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="max-w">
+        <h2 class="section-title section-center reveal">
+          Testimonials That<br />Speak to <span>My Results</span>
+        </h2>
+        <div class="testi-grid">
+          <div class="testi-card reveal">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">
+              Your design solutions effectively prioritize user needs, making
+              interfaces intuitive and easy to navigate. The attention to
+              consistency and accessibility significantly enhance usability.
+              Moving forward, focusing on refining micro-interactions could
+              further elevate the user experience.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar">FS</div>
+              <div>
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-name">Fawzi Sayed</div>
+                <div class="testi-role">UI/UX Designer &nbsp;·&nbsp; 5.0</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <div class="testi-quote">"</div>
+            <p class="testi-text">
+              Your design solutions effectively prioritize user needs, making
+              interfaces intuitive and easy to navigate. The attention to
+              consistency and accessibility significantly enhance usability.
+              Moving forward, focusing on refining micro-interactions could
+              further elevate the user experience.
+            </p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background: #378add">RS</div>
+              <div>
+                <div class="testi-stars">★★★★★</div>
+                <div class="testi-name">Rohit Sehrawat</div>
+                <div class="testi-role">UI/UX Designer &nbsp;·&nbsp; 5.0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section id="cta-band">
+      <div class="max-w reveal">
+        <h2>Have an Awesome Project Idea?<br /><span>Let's Discuss</span></h2>
+        <div class="email-form">
+          <span class="email-icon">✉</span>
+          <input type="email" placeholder="Enter Email Address" />
+          <button type="button">Send</button>
+        </div>
+        <div class="cta-badges">
+          <div class="cta-badge">
+            <span class="cta-badge-icon">★</span> 4.9/5 Average Ratings
+          </div>
+          <div class="cta-badge">
+            <span class="cta-badge-icon">🏆</span> 25+ Winning Awards
+          </div>
+          <div class="cta-badge">
+            <span class="cta-badge-icon">✓</span> Certified Product Designer
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact-inner reveal">
+        <div class="contact-left">
+          <h2>Contact Me</h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.4);
+              font-size: 0.8rem;
+              margin-top: 0.3rem;
+            "
+          >
+            Tell me about your project!
+          </p>
+          <p>
+            My project focuses on creating intuitive, user-centered designs that
+            enhance usability, streamline workflows, and drive meaningful user
+            engagement.
+          </p>
+        </div>
+        <div class="contact-right">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="submit-btn" type="button">Get in touch</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3>Neha</h3>
+          <p>
+            UI/UX Designer focused on creating intuitive, user centered designs
+            that drive impactful experiences.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Portfolio</a>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="#contact">Contact</a>
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms &amp; conditions</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacts</h4>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                ></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2024 Neha. All rights reserved.</div>
+    </footer>
+
+    <script>
+      const revealEls = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      revealEls.forEach((el) => observer.observe(el));
+
+      document.querySelectorAll('nav a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", () => {
+          document
+            .querySelectorAll(".nav-links a")
+            .forEach((l) => l.classList.remove("active"));
+          a.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
